@@ -34,11 +34,12 @@ android {
             }
         }
         applicationVariants.all { variant ->
+        println("Variant: ${variant.getFlavorName()}")
         if (variant.getFlavorName() == 'gameFull') {
         variant.mergeAssetsProvider.get().doLast {
-          println("Including all game assets in the application package")         
-                  }
-             }
+            println("Including all game assets in the application package")
+                }
+            }
         }
         ext {
             useBuildDate = false
