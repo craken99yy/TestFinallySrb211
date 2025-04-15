@@ -33,28 +33,12 @@ android {
                 dimension "assets"
             }
         }
-        applicationVariants.all { variant -> 
-        if (variant.getFlavorName() == 'gameNoAssets') { 
-        variant.mergeAssetsProvider.get().doLast { 
-            println("Removing game assets from the application package") 
-            delete(fileTree( 
-                dir: outputDir, 
-                includes: [ 
-                    'srb2.pk3', 
-                    'zones.pk3', 
-                    'player.dta', 
-                    'patch.pk3', 
-                    'patch_music.pk3', 
-                    'music.dta', 
-                    'modelpacks/default.zip'
-                ] 
-            )) 
-        } 
-        } else if (variant.getFlavorName() == 'gameFull') { 
-        variant.mergeAssetsProvider.get().doLast { 
-            println("Including all game assets in the application package") 
-                } 
-            } 
+        applicationVariants.all { variant ->
+        if (variant.getFlavorName() == 'gameFull') {
+        variant.mergeAssetsProvider.get().doLast {
+          println("Including all game assets in the application package")         
+                  }
+             }
         }
         ext {
             useBuildDate = false
